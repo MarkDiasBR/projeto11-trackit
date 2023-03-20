@@ -6,6 +6,11 @@ export default function HabitosPage() {
     return (
         <HabitosPageContainer>
             <NavBar />
+            <div>
+                <p>Meus hábitos</p>
+                <button>+</button>
+            </div>
+                
             <Footer />
         </HabitosPageContainer>
     )

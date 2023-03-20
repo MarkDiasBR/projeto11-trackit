@@ -41,6 +41,9 @@ export const InputField = styled.input`
     &:focus {
         outline: 2px solid #1098FC;
     }
+    &:disabled {
+        background-color: #F2F2F2;
+    }
 `
 export const ButtonForm = styled.button`
     width: calc(100vw - 72px);
@@ -48,6 +51,7 @@ export const ButtonForm = styled.button`
     font-size: 20px;
     color: #FFFFFF;
     background-color: #52B6FF;
+    opacity: ${props=>props.disabledInput ? 0.7 : 1};
     border: none;
     border-radius: 5px;
 ` 
