@@ -1,7 +1,11 @@
 import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
-    color: black;
+    * {
+        box-sizing: border-box;
+        font-family: 'Lexend Deca', sans-serif;
+    }
+    
 `
 
 export default GlobalStyle
