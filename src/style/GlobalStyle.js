@@ -6,10 +6,11 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Lexend Deca', sans-serif;
     }
     
-    a:visited {
-        color: red;
-        text-decoration: none;
+    a:link, a:visited, a:hover, a:active { 
+        color: #52B6FF;
+        text-decoration: none; 
     }
+
 `
 
 export default GlobalStyle
