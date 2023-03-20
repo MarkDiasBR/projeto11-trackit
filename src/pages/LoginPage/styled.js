@@ -37,7 +37,6 @@ export const InputField = styled.input`
     border: 1px solid #D4D4D4;
     &::placeholder {
         color: #DBDBDB;
-        margin-left: ;
     }
     &:focus {
         outline: 2px solid #1098FC;
