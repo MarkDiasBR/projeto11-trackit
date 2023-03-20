@@ -6,13 +6,6 @@ export default function HojePage() {
     return (
         <HojePageContainer>
             <NavBar />
-
-
-
-
-
-
-
             <Footer />
         </HojePageContainer>
     )

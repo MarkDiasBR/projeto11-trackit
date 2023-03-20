@@ -6,13 +6,6 @@ export default function HistoricoPage() {
     return (
         <HistoricoPageContainer>
             <NavBar />
-
-
-
-
-
-
-
             <Footer />
         </HistoricoPageContainer>
     )

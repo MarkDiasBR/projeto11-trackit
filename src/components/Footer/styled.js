@@ -24,9 +24,9 @@ export const FooterContainer = styled.div`
 `
 
 export const CircleContainer = styled.div`
-    width: 110px;
+    width: 100px;
     margin-bottom: 10px;
     position: relative;
-    bottom: 16px;
+    bottom: 18px;
     left: 5px
 `

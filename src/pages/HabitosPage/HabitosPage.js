@@ -6,13 +6,6 @@ export default function HabitosPage() {
     return (
         <HabitosPageContainer>
             <NavBar />
-
-
-
-
-
-
-
             <Footer />
         </HabitosPageContainer>
     )
