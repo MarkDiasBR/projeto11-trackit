@@ -1,5 +1,6 @@
 import LoginPage from "./pages/LoginPage/LoginPage";
 import CadastroPage from "./pages/CadastroPage/CadastroPage";
+import HabitosPage from "./pages/HabitosPage/HabitosPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<LoginPage />}/>
                 <Route path="/cadastro" element={<CadastroPage />}/>
+                <Route path="/habitos" element={<HabitosPage />} />
             </Routes>
         </BrowserRouter>
 

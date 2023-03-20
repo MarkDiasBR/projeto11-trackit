@@ -2,6 +2,7 @@ import { LoginElementsContainer, Logo, LoginForm, InputField, ButtonForm } from 
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import BASE_URL from "../../constants/url"
+import axios from "axios"
 
 export default function LoginPage() {
     const [form, setForm] = useState({})
