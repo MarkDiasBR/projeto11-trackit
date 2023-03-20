@@ -14,11 +14,13 @@ export const FooterContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
 
-/* 
-    p:nth-child(2) {
-        color: #FFFFFF;
-        align-self: flex-start;
-    } */
+    p { 
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
 `
 
 export const CircleContainer = styled.div`

@@ -1,10 +1,10 @@
 import NavBar from "../../components/NavBar/NavBar"
 import Footer from "../../components/Footer/Footer"
-import { HabitosPageContainer } from "./styled"
+import { HojePageContainer } from "./styled"
 
-export default function HabitosPage() {
+export default function HojePage() {
     return (
-        <HabitosPageContainer>
+        <HojePageContainer>
             <NavBar />
 
 
@@ -14,6 +14,6 @@ export default function HabitosPage() {
 
 
             <Footer />
-        </HabitosPageContainer>
+        </HojePageContainer>
     )
 }

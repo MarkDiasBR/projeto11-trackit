@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Lexend Deca', sans-serif;
     }
     
+    a:visited {
+        color: red;
+        text-decoration: none;
+    }
 `
 
 export default GlobalStyle
