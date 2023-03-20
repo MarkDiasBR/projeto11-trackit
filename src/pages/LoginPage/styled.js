@@ -43,7 +43,7 @@ export const InputField = styled.input`
     }
 `
 export const ButtonForm = styled.button`
-    width: 303px;
+    width: calc(100vw - 72px);
     height: 45px;
     font-size: 20px;
     color: #FFFFFF;

@@ -29,7 +29,7 @@ export default function LoginPage() {
 
     return(
         <LoginElementsContainer>
-            <Logo src="./assets/img/Logo.png" alt="TrackIt Logo"/>
+            <Logo src="./assets/img/Logo.svg" alt="TrackIt Logo"/>
             <LoginForm onSubmit={handleSubmit}>
                 <InputField name="email" type="email" placeholder="e-mail" onChange={handleForm}/>
                 <InputField name="password" type="password" placeholder="senha" onChange={handleForm}/>
