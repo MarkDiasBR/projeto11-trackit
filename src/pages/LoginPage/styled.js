@@ -29,6 +29,7 @@ export const InputField = styled.input`
     margin-left: 36px;
     margin-right: 36px;
     width: calc(100vw - 72px);
+    max-width: 450px;
     height: 45px;
     padding: 11px;
     font-size: 20px;
@@ -47,6 +48,7 @@ export const InputField = styled.input`
 `
 export const ButtonForm = styled.button`
     width: calc(100vw - 72px);
+    max-width: 450px;
     height: 45px;
     font-size: 20px;
     color: #FFFFFF;
@@ -54,4 +56,11 @@ export const ButtonForm = styled.button`
     opacity: ${props=>props.disabledInput ? 0.7 : 1};
     border: none;
     border-radius: 5px;
+
+    svg {
+        height: 2px;
+        padding: 0;
+        margin: 0;
+        background-color: yellow;
+    }
 ` 

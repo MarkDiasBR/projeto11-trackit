@@ -16,6 +16,13 @@ export const FooterContainer = styled.div`
 
     p { 
         text-decoration: none;
+        border-radius: 2px;
+    }
+
+    a {border-radius: 2px}
+
+    a:nth-child(2) {
+        margin-bottom: 45px;
     }
 
     a:visited {
@@ -24,9 +31,12 @@ export const FooterContainer = styled.div`
 `
 
 export const CircleContainer = styled.div`
-    width: 100px;
+    width: 115px;
+
+    padding-left: 8px;
+    padding-right: 18px;
     margin-bottom: 10px;
+    margin-top: 10px;
     position: relative;
-    bottom: 18px;
     left: 5px
 `

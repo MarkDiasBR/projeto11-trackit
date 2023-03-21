@@ -4,6 +4,9 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         font-family: 'Lexend Deca', sans-serif;
+        &:focus {
+            outline: 2px solid #1098FC;    
+        }
     }
     
     a:link, a:visited, a:hover, a:active { 

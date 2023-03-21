@@ -37,9 +37,27 @@ export default function LoginPage() {
         <LoginElementsContainer>
             <Logo src="./assets/img/Logo.svg" alt="TrackIt Logo"/>
             <LoginForm onSubmit={handleSubmit}>
-                <InputField name="email" type="email" placeholder="e-mail" onChange={handleForm} disabled={disabledInput}/>
-                <InputField name="password" type="password" placeholder="senha" onChange={handleForm} disabled={disabledInput}/>
-                <ButtonForm type="submit" disabledInput={disabledInput}>Entrar</ButtonForm>                               
+                <InputField
+                    name="email"
+                    type="email"
+                    placeholder="e-mail"
+                    onChange={handleForm}
+                    disabled={disabledInput}
+                    required
+                />
+                <InputField
+                    name="password"
+                    type="password"
+                    placeholder="senha"
+                    onChange={handleForm}
+                    disabled={disabledInput}
+                    required
+                />
+                <ButtonForm type="submit" disabledInput={disabledInput}>
+                    {disabledInput
+                    ? <img src="./assets/img/SpinnerDots.svg" alt="Loading"/>
+                    : "Entrar"}
+                </ButtonForm>                               
             </LoginForm>
             <Link to="/cadastro">
                 <p>Não tem uma conta? Cadastre-se!</p>

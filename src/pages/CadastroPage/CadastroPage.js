@@ -32,11 +32,35 @@ export default function CadastroPage() {
         <LoginElementsContainer>
             <Logo src="./assets/img/Logo.svg" alt="TrackIt Logo"/>
             <LoginForm onSubmit={handleSubmit}>
-                <InputField name="email" type="email" placeholder="e-mail" onChange={handleForm}/>
-                <InputField name="password" type="password" placeholder="senha" onChange={handleForm}/>
-                <InputField name="name" placeholder="nome" onChange={handleForm}/>
-                <InputField name="image" placeholder="foto" onChange={handleForm}/>
-                <ButtonForm type="submit">Cadastrar</ButtonForm>                               
+                <InputField 
+                    name="email" 
+                    type="email" 
+                    placeholder="e-mail" 
+                    onChange={handleForm}
+                    required
+                />
+                <InputField 
+                    name="password" 
+                    type="password" 
+                    placeholder="senha" 
+                    onChange={handleForm}
+                    required
+                />
+                <InputField 
+                    name="name" 
+                    placeholder="nome" 
+                    onChange={handleForm}
+                    required
+                />
+                <InputField 
+                    name="image" 
+                    placeholder="foto" 
+                    onChange={handleForm}
+                    required
+                />
+                <ButtonForm type="submit">
+                    Cadastrar
+                </ButtonForm>                               
             </LoginForm>
             <Link to="/">
                 <p>Já tem uma conta? Faça login!</p>
