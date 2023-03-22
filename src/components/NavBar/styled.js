@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const NavBarContainer = styled.div`
+    z-index: 1;
     padding: 0 18px;
     background: #126BA5;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
