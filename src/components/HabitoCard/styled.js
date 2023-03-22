@@ -8,26 +8,31 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
 
-    input {
+    p {
         margin-left: 19px;
         margin-top: 18px;
+        margin-bottom: 0px;
         width: calc(100% - 38px);
-        border: 1px solid #D4D4D4;
-        border-radius: 5px;
-        height: 45px;
         font-size: 20px;
-        padding: 11px;
-
-        &::placeholder {
-            color: #DBDBDB;
-        }
+        line-height: 25px;
+        color: #666666;
     }
+
+    & > button:nth-of-type(1) {
+        position: absolute;
+        right: 18px;
+        color: yellow;
+        background-color: transparent;
+    }
+
+
 `
 
 export const DaysDiv = styled.div`
     width: fit-content;
     margin-left: 19px;
     margin-top: 8px;
+    margin-bottom: 15px;
     display: flex;
     gap: 4px;
 
@@ -40,30 +45,4 @@ export const DaysDiv = styled.div`
         background-color: #FFFFFF;
         border: 1px solid #D4D4D4;
     }
-`
-
-export const ButtonsDiv = styled.div`
-    align-self: flex-end;
-    color: white;
-    margin-top: 29px;
-    margin-right: 19px;
-    margin-bottom: 15px;
-
-    display: flex;
-    gap: 15px;
-
-    button {
-        font-family: 'Lexend Deca', sans-serif;
-        font-size: 16px;
-        color: #FFFFFF;
-        width: 84px;
-        &:first-child {
-            background-color: #FFFFFF;
-            color: #52B6FF;
-        }
-    }
-`
-
-export const TitleContainer = styled.div`
-    
 `
