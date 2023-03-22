@@ -16,17 +16,19 @@ export const FooterContainer = styled.div`
 
     p { 
         text-decoration: none;
-        border-radius: 2px;
     }
 
-    a {border-radius: 2px}
+    a {border-radius: 1px; outline-offset: 5px;}
 
     a:nth-child(2) {
         margin-bottom: 45px;
+        outline-offset: -2px;
+        border-radius: 8px;
     }
 
-    a:visited {
+    a:visited, a:active, a:link {
         text-decoration: none;
+        outline: none;
     }
 `
 

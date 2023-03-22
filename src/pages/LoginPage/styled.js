@@ -5,11 +5,21 @@ export const LoginElementsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    a {
+        margin-top: 25px;
+        border-radius: 2px;
+        outline-offset: 2px;
+    }
+
+    a:visited, a:active, a:link {
+        outline: none;
+    }
+
     p {
         font-family: 'Lexend Deca', sans-serif;
         color: #52B6FF;
         text-decoration: underline;
-        margin-top: 25px;
     }
 `
 export const Logo = styled.img`
@@ -49,8 +59,8 @@ export const InputField = styled.input`
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover{
-        box-shadow: 0 0 0px 1000px #FFF inset;
-        -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+        box-shadow: 0 0 0px 1000px #F2F2F2 inset;
+        -webkit-box-shadow: 0 0 0px 1000px #F2F2F2 inset;
         -webkit-text-fill-color: #126BA5;
     }
 `
@@ -64,11 +74,9 @@ export const ButtonForm = styled.button`
     opacity: ${props=>props.disabledInput ? 0.7 : 1};
     border: none;
     border-radius: 5px;
+    outline: none;
 
-    svg {
-        height: 2px;
-        padding: 0;
-        margin: 0;
-        background-color: yellow;
+    img {
+        height: 13px;
     }
 ` 

@@ -18,6 +18,15 @@ export const NavBarContainer = styled.div`
         font-size: 38px;
         font-family: 'Playball', cursive;
     }
+
+    a {
+        outline-offset: 8px;
+        border-radius: 1px;
+    }
+
+    a:visited, a:active, a:link {
+        outline: none;
+    }
     
     img {
         width: 51px;

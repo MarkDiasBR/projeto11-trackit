@@ -5,11 +5,21 @@ export const LoginElementsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    a {
+        margin-top: 25px;
+        border-radius: 2px;
+        outline-offset: 2px;
+    }
+
+    a:visited, a:active, a:link {
+        outline: none;
+    }
+
     p {
         font-family: 'Lexend Deca', sans-serif;
         color: #52B6FF;
         text-decoration: underline;
-        margin-top: 25px;
     }
 `
 export const Logo = styled.img`
@@ -29,6 +39,7 @@ export const InputField = styled.input`
     margin-left: 36px;
     margin-right: 36px;
     width: calc(100vw - 72px);
+    max-width: 450px;
     height: 45px;
     padding: 11px;
     font-size: 20px;
@@ -52,10 +63,12 @@ export const InputField = styled.input`
 `
 export const ButtonForm = styled.button`
     width: calc(100vw - 72px);
+    max-width: 450px;
     height: 45px;
     font-size: 20px;
     color: #FFFFFF;
     background-color: #52B6FF;
     border: none;
     border-radius: 5px;
+    outline: none;
 ` 
