@@ -13,7 +13,6 @@ const GlobalStyle = createGlobalStyle`
         color: #52B6FF;
         text-decoration: none; 
     }
-
 `
 
 export default GlobalStyle

@@ -33,6 +33,7 @@ export const InputField = styled.input`
     padding: 11px;
     font-size: 20px;
     color: #126BA5;
+    caret-color: #126BA5;
     border-radius: 5px;
     border: 1px solid #D4D4D4;
     &::placeholder {
@@ -40,6 +41,13 @@ export const InputField = styled.input`
     }
     &:focus {
         outline: 2px solid #1098FC;
+    }
+    
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover{
+        box-shadow: 0 0 0px 1000px #FFF inset;
+        -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+        -webkit-text-fill-color: #126BA5;
     }
 `
 export const ButtonForm = styled.button`

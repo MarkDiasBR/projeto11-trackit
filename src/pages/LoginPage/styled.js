@@ -36,6 +36,7 @@ export const InputField = styled.input`
     color: #126BA5;
     border-radius: 5px;
     border: 1px solid #D4D4D4;
+    caret-color: #126BA5;
     &::placeholder {
         color: #DBDBDB;
     }
@@ -44,6 +45,13 @@ export const InputField = styled.input`
     }
     &:disabled {
         background-color: #F2F2F2;
+    }  
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover{
+        box-shadow: 0 0 0px 1000px #FFF inset;
+        -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+        -webkit-text-fill-color: #126BA5;
     }
 `
 export const ButtonForm = styled.button`
