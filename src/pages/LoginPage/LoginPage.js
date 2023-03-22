@@ -55,7 +55,7 @@ export default function LoginPage() {
                 />
                 <ButtonForm type="submit" disabledInput={disabledInput}>
                     {disabledInput
-                    ? <img src="./assets/img/SpinnerDots.svg" alt="Loading"/>
+                    ? <img src="./assets/img/SpinnerDots.svg " alt="Loading"/>
                     : "Entrar"}
                 </ButtonForm>                               
             </LoginForm>

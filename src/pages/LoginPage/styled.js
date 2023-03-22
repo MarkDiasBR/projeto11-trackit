@@ -79,4 +79,8 @@ export const ButtonForm = styled.button`
     img {
         height: 13px;
     }
+
+    &:active, &:link {
+        outline: none;
+    }
 ` 

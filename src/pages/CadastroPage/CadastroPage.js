@@ -6,6 +6,7 @@ import BASE_URL from "../../constants/url"
 
 export default function CadastroPage() {
     const [form, setForm] = useState({email: "", name: "", image: "", password: "" })
+    const [disabledInput, setDisabledInput] = useState(false)
 
     const navigate = useNavigate()
 
@@ -18,12 +19,17 @@ export default function CadastroPage() {
     function handleSubmit(event) {
         event.preventDefault()
 
+        setDisabledInput(true)
+
         axios.post(`${BASE_URL}/auth/sign-up`, form)
             .then(response => {
                 console.log(response.data)
                 navigate("/") 
             })
-            .catch(error=>alert(error.response.data.message))
+            .catch(error=> {
+                alert(error.response.data.message)
+                setDisabledInput(false)
+            })
     }
 
     console.log(form)
@@ -37,6 +43,7 @@ export default function CadastroPage() {
                     type="email" 
                     placeholder="e-mail" 
                     onChange={handleForm}
+                    disabled={disabledInput}
                     required
                 />
                 <InputField 
@@ -44,22 +51,27 @@ export default function CadastroPage() {
                     type="password" 
                     placeholder="senha" 
                     onChange={handleForm}
+                    disabled={disabledInput}
                     required
                 />
                 <InputField 
                     name="name" 
                     placeholder="nome" 
                     onChange={handleForm}
+                    disabled={disabledInput}
                     required
                 />
                 <InputField 
                     name="image" 
                     placeholder="foto" 
                     onChange={handleForm}
+                    disabled={disabledInput}
                     required
                 />
-                <ButtonForm type="submit">
-                    Cadastrar
+                <ButtonForm type="submit" disabledInput={disabledInput}>
+                {disabledInput
+                    ? <img src="./assets/img/SpinnerDots.svg" alt="Loading"/>
+                    : "Cadastrar"}
                 </ButtonForm>                               
             </LoginForm>
             <Link to="/">

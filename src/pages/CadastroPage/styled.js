@@ -44,20 +44,23 @@ export const InputField = styled.input`
     padding: 11px;
     font-size: 20px;
     color: #126BA5;
-    caret-color: #126BA5;
     border-radius: 5px;
     border: 1px solid #D4D4D4;
+    caret-color: #126BA5;
     &::placeholder {
         color: #DBDBDB;
     }
     &:focus {
         outline: 2px solid #1098FC;
     }
-    
+    &:disabled {
+        background-color: #F2F2F2;
+    }  
+
     &:-webkit-autofill,
     &:-webkit-autofill:hover{
-        box-shadow: 0 0 0px 1000px #FFF inset;
-        -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+        box-shadow: 0 0 0px 1000px #F2F2F2 inset;
+        -webkit-box-shadow: 0 0 0px 1000px #F2F2F2 inset;
         -webkit-text-fill-color: #126BA5;
     }
 `
@@ -68,7 +71,16 @@ export const ButtonForm = styled.button`
     font-size: 20px;
     color: #FFFFFF;
     background-color: #52B6FF;
+    opacity: ${props=>props.disabledInput ? 0.7 : 1};
     border: none;
     border-radius: 5px;
     outline: none;
+
+    img {
+        height: 13px;
+    }
+
+    &:active, &:link {
+        outline: none;
+    }
 ` 
