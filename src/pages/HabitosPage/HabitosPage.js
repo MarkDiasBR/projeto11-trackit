@@ -23,7 +23,6 @@ export default function HabitosPage() {
                     <HabitoCard />
                     <HabitoCard />
                     <HabitoCard />
-
                 </ContainerCards>
        
             </MainContainer>
