@@ -1,12 +1,15 @@
-import { LoginElementsContainer, Logo, LoginForm, InputField, ButtonForm } from "./styled"
-import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { LoginElementsContainer, Logo, LoginForm, InputField, ButtonForm, AlertDiv } from "./styled"
+import { Link, useNavigate, useLocation } from "react-router-dom"
+import { useState, useContext } from "react"
 import BASE_URL from "../../constants/url"
 import axios from "axios"
+import { UserContext } from "../../App"
 
 export default function LoginPage() {
+    const { user, setUser } = useContext(UserContext);
     const [form, setForm] = useState({})
     const [disabledInput, setDisabledInput] = useState(false)
+    const { state } = useLocation();
 
     const navigate = useNavigate()
 
@@ -24,8 +27,10 @@ export default function LoginPage() {
         axios.post(`${BASE_URL}/auth/login`, form)
             .then(response => {
                 console.log(response.data)
-
-                navigate("/habitos")
+                const { id, name, image, token } = response.data
+                setUser({ id, name, image, token })
+                localStorage.setItem("user", JSON.stringify(response.data))
+                navigate("/hoje")
             })
             .catch(error => {
                 alert(error.response.data.message)
@@ -33,7 +38,17 @@ export default function LoginPage() {
             })
     }
 
+    function ErrorAlert(props) {
+        return (
+            <>
+                <p>⚠️ ACESSO NÃO PERMITIDO</p>
+                <p>{props.errorMessage}</p>
+            </>
+        )
+    }
+
     return(
+        <>
         <LoginElementsContainer>
             <Logo src="./assets/img/Logo.svg" alt="TrackIt Logo"/>
             <LoginForm onSubmit={handleSubmit}>
@@ -62,6 +77,13 @@ export default function LoginPage() {
             <Link to="/cadastro">
                 <p>Não tem uma conta? Cadastre-se!</p>
             </Link>
+
         </LoginElementsContainer>
+        {state && (
+            <AlertDiv>
+                <ErrorAlert errorMessage={state.errorMessage}/>
+            </AlertDiv>
+        )}
+        </>
     )
 }

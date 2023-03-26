@@ -80,7 +80,7 @@ export const ButtonForm = styled.button`
         height: 13px;
     }
 
-    &:active, &:link {
+    &:active, &:link, &:hover {
         outline: none;
     }
 ` 

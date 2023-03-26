@@ -10,7 +10,7 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 70px 17px;
-    
+
     p {
         margin-top: 35px;
         font-family: 'Lexend Deca', sans-serif;
@@ -18,4 +18,6 @@ export const MainContainer = styled.div`
         font-size: 22px;
         color: #126BA5;
     }
+
+
 `

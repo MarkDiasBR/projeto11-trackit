@@ -4,8 +4,12 @@ import { ContainerTopo, ContainerCards, HabitosPageContainer, MainContainer } fr
 import NovoHabitoCard from "../../components/NovoHabitoCard/NovoHabitoCard"
 import HabitoCard from "../../components/HabitoCard/HabitoCard"
 import MensagemInicial from "./MensagemInicial"
+import { useContext, useEffect } from "react"
+import { UserContext } from "../../App"
 
 export default function HabitosPage() {
+    const { user } = useContext(UserContext);
+
     return (
         <HabitosPageContainer>
             <NavBar />

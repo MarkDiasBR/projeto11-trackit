@@ -6,6 +6,7 @@ export const FooterContainer = styled.div`
     font-family: 'Lexend Deca', sans-serif;
     font-size: 18px;
     background-color: #FFFFFF;
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
     color: #52B6FF;
     position: fixed;
     bottom: 0;
@@ -34,11 +35,10 @@ export const FooterContainer = styled.div`
 
 export const CircleContainer = styled.div`
     width: 115px;
-
     padding-left: 8px;
     padding-right: 18px;
     margin-bottom: 10px;
     margin-top: 10px;
     position: relative;
-    left: 5px
+    left: 5px;
 `
