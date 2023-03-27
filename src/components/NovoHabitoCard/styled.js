@@ -38,6 +38,10 @@ export const DaysDiv = styled.div`
         height: 30px;
         background-color: #FFFFFF;
         border: 1px solid #D4D4D4;
+        &.selecionado {
+            background-color: #CFCFCF;
+            color: #FFFFFF;
+        }
     }
 `
 

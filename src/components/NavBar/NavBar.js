@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NavBarContainer } from "./styled";
 import { UserContext } from "../../App";
@@ -9,6 +9,7 @@ export default function NavBar() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        console.log(user)
         if (localStorageUser === null) {
             navigate("/", {state: {errorMessage: "Faça o login!"}})
         }

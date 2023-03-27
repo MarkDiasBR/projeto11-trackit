@@ -15,6 +15,9 @@ export default function LoginPage() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        if (user) {
+            navigate("/hoje")
+        }
         if (state) {
             setTimeout(() => {
                 setClassGone("gone")
@@ -36,10 +39,10 @@ export default function LoginPage() {
 
         axios.post(`${BASE_URL}/auth/login`, form)
             .then(response => {
-                console.log(response.data)
                 const { id, name, image, token } = response.data
+                console.log({ id, name, image, token })
                 setUser({ id, name, image, token })
-                localStorage.setItem("user", JSON.stringify(response.data))
+                localStorage.setItem("user", JSON.stringify({ id, name, image, token }))
                 navigate("/hoje")
             })
             .catch(error => {

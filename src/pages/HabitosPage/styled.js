@@ -8,7 +8,6 @@ export const HabitosPageContainer = styled.div`
 export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     padding: 70px 17px;
 
@@ -61,3 +60,9 @@ export const ContainerCards = styled.div`
     margin-bottom: 50px;
 `
 
+// export const MasterDiv = styled.div`
+//     height: 100%;
+//     margin: 25px auto 0;
+//     padding: 0;
+//     background-color: yellow;
+// `

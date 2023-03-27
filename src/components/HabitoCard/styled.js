@@ -8,6 +8,10 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
 
+    &:first-of-type {
+        margin-top: 0;
+    }
+
     p {
         margin-left: 19px;
         margin-top: 18px;
