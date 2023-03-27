@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import AlertContainer from "./AlertContainer";
 
 export const LoginElementsContainer = styled.div`
     display: flex;
@@ -101,4 +102,13 @@ export const AlertDiv = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    transition: opacity 1000ms;
 `
+
+ export const AnimatedContainer = styled.div`
+    opacity: 1;
+    transition: opacity 0.5s 0.5s ease-in-out;
+    &.gone {
+        opacity: 0;
+    }
+ `

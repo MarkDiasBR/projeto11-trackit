@@ -1,17 +1,27 @@
-import { LoginElementsContainer, Logo, LoginForm, InputField, ButtonForm, AlertDiv } from "./styled"
+import { LoginElementsContainer, Logo, LoginForm, InputField, ButtonForm, AlertDiv, AnimatedContainer } from "./styled"
 import { Link, useNavigate, useLocation } from "react-router-dom"
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import BASE_URL from "../../constants/url"
 import axios from "axios"
 import { UserContext } from "../../App"
+import AlertContainer from "./AlertContainer"
 
 export default function LoginPage() {
     const { user, setUser } = useContext(UserContext);
     const [form, setForm] = useState({})
+    const [classGone, setClassGone] = useState("")
     const [disabledInput, setDisabledInput] = useState(false)
     const { state } = useLocation();
-
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (state) {
+            setTimeout(() => {
+                setClassGone("gone")
+            }, 3000);
+        }
+    }, [])
+    
 
     function handleForm(event) {
         const {name, value} = event.target
@@ -43,10 +53,10 @@ export default function LoginPage() {
             <>
                 <p>⚠️ ACESSO NÃO PERMITIDO</p>
                 <p>{props.errorMessage}</p>
-            </>
+            </> 
         )
     }
-
+    
     return(
         <>
         <LoginElementsContainer>
@@ -79,11 +89,16 @@ export default function LoginPage() {
             </Link>
 
         </LoginElementsContainer>
-        {state && (
-            <AlertDiv>
-                <ErrorAlert errorMessage={state.errorMessage}/>
-            </AlertDiv>
-        )}
+        <AnimatedContainer className={`${classGone}`}>
+            <AlertContainer>
+                {state && (
+                    <AlertDiv>
+                        <ErrorAlert errorMessage={state.errorMessage}/>
+                    </AlertDiv>
+                )}
+            </AlertContainer>            
+        </AnimatedContainer>
+
         </>
     )
 }

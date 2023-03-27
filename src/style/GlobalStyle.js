@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         font-family: 'Lexend Deca', sans-serif;
+        -webkit-tap-highlight-color: transparent;
         &:focus {
             outline: 2px solid #1098FC;    
         }
