@@ -16,12 +16,11 @@ export default function HabitosPage() {
     const [user, setUser] = useState(localStorageUser === null ? {} : localStorageUser);
     const navigate = useNavigate()
 
-    useEffect(() => {
-        console.log(user)
-        if (localStorageUser === null) {
-            navigate("/", {state: {errorMessage: "Faça o login!"}})
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (localStorageUser === null) {
+    //         navigate("/", {state: {errorMessage: "Faça o login!"}})
+    //     }
+    // }, [])
 
 
 

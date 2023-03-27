@@ -5,6 +5,7 @@ import CadastroPage from "./pages/CadastroPage/CadastroPage";
 import HabitosPage from "./pages/HabitosPage/HabitosPage"
 import HojePage from "./pages/HojePage/HojePage";
 import HistoricoPage from "./pages/HistoricoPage/HistoricoPage";
+import ErroPage from "./pages/ErroPage/ErroPage";
 
 export const UserContext = createContext();
 
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/habitos" element={<HabitosPage />} />
                     <Route path="/hoje" element={<HojePage />} />
                     <Route path="/historico" element={<HistoricoPage />} />
+                    <Route path="*" element={<ErroPage />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
