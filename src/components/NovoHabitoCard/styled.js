@@ -64,5 +64,8 @@ export const ButtonsDiv = styled.div`
             background-color: #FFFFFF;
             color: #52B6FF;
         }
+        &:disabled {
+            opacity: 0.4;
+        }
     }
 `

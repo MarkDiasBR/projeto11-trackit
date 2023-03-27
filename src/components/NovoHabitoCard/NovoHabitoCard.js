@@ -1,12 +1,14 @@
 import { CardContainer, DaysDiv, ButtonsDiv } from "./styled"
 import { useContext, useState, useEffect } from "react"
 import { UserContext } from "../../App"
+import { HabitosContext } from "../../pages/HabitosPage/HabitosPage"
 import BASE_URL from "../../constants/url"
 import axios from "axios"
 
-export default function NovoHabitoCard() {
+export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) {
     const [body, setBody] = useState({"name": "", "days": []})
     const { user } = useContext(UserContext)
+    const { habitos, setHabitos } = useContext(HabitosContext);
     const config = { "headers" : { "Authorization": `Bearer ${user.token}` } };
 
     function handleBody(event) {
@@ -14,15 +16,20 @@ export default function NovoHabitoCard() {
             const { name, value } = event.target
             setBody({...body, [name]: value})
         } else if (event.target.type === "submit") {
-            if (body.days.includes(event.target.value)) {
-                const daysArray = body.days.filter((elem)=>elem!==event.target.value)
-                setBody({...body, ['days']: daysArray})
+            if (body.days.includes(Number(event.target.value))) {
+                console.log("A")
+                const daysArray = body.days.filter((elem)=>elem!==Number(event.target.value))
+                const newBody = {...body, ['days']: daysArray}
+                setBody(newBody)
             } else {
+                console.log("B")
                 const daysArray = [...body.days];
                 daysArray.push(Number(event.target.value))
-                setBody({...body, ['days']: daysArray})
+                const newBody = {...body, ['days']: daysArray}
+                setBody(newBody)
             }
         }
+
     }
 
     function handleSubmit(event) {
@@ -31,18 +38,24 @@ export default function NovoHabitoCard() {
         axios.post(`${BASE_URL}/habits`, body, config)
             .then(response => {
                 console.log(response.data)
+                axios.get(`${BASE_URL}/habits`, config)
+                    .then(response=>{
+                        console.log("A")
+                        console.log(response.data)
+                        setHabitos(response.data)
+                    })
+                    .catch(err=>console.log(err.res.data))
             })
             .catch(error => {
                 console.log(error.response.data.message)
         })
     }
 
-    console.log("body:")
-    console.log(body)
-
     return (
+        <>
+        {botaoNovoHabito ?
         <CardContainer>
-            <input 
+            <input
                 name="name"
                 type="text" 
                 placeholder="Ler 1 capítulo de livro"
@@ -80,9 +93,15 @@ export default function NovoHabitoCard() {
                     onClick={handleBody}>S</button>
             </DaysDiv>
             <ButtonsDiv>
-                <button>Cancelar</button>
-                <button onClick={handleSubmit} type="submit">Salvar</button>
+                <button onClick={()=>{
+                    const initialBody = {"name": "", "days": []}
+                    setBody(initialBody)
+                    setBotaoNovoHabito(false)
+                }}>Cancelar</button>
+                <button onClick={handleSubmit} type="submit" disabled={body.days == false || body.name === ""}>Salvar</button>
             </ButtonsDiv>
         </CardContainer>
+        : ""}
+        </>
     )
 }

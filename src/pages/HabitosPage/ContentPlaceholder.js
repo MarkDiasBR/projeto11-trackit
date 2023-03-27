@@ -22,16 +22,15 @@ const TaskList = props => {
 }
 
 const MasterDiv = styled.div`
-    height: 100%;
     margin: 20px auto 0;
     padding: 0;
 `
 
-export default function ContentPlaceholder() {
+export default function ContentPlaceholder({ carregando }) {
+
     return (
         <MasterDiv>
-            <TaskList />
+            {carregando ? <TaskList /> : ""}
         </MasterDiv>
- 
     )
 }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: #FFFFFF;
     width: 100%;
     border-radius: 5px;
@@ -48,5 +48,9 @@ export const DaysDiv = styled.div`
         height: 30px;
         background-color: #FFFFFF;
         border: 1px solid #D4D4D4;
+        &.selecionado {
+            background-color: #CFCFCF;
+            color: #FFFFFF;
+        }
     }
 `

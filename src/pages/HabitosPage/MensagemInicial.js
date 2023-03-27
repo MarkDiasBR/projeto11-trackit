@@ -1,9 +1,11 @@
 import styled from "styled-components"
 
-export default function MensagemInicial() {
+export default function MensagemInicial({ visivel, carregando }) {
     return (
         <Paragrafo>
-            Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
+            {visivel && !carregando
+            ? "Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!"
+            : ""}
         </Paragrafo>
     )
 }

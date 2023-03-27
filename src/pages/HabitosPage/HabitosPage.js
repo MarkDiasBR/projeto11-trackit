@@ -4,84 +4,65 @@ import { ContainerTopo, ContainerCards, HabitosPageContainer, MainContainer } fr
 import NovoHabitoCard from "../../components/NovoHabitoCard/NovoHabitoCard"
 import HabitoCard from "../../components/HabitoCard/HabitoCard"
 import MensagemInicial from "./MensagemInicial"
-import { useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../App"
 import ContentPlaceholder from "./ContentPlaceholder"
 import axios from "axios"
 import BASE_URL from "../../constants/url"
 
+export const HabitosContext = createContext();
+
 export default function HabitosPage() {
     const localStorageUser = JSON.parse(localStorage.getItem("user"))
-    const [user, setUser] = useState(localStorageUser === null ? {} : localStorageUser);
     const navigate = useNavigate()
+    const { user } = useContext(UserContext);
+    const [carregando, setCarregando] = useState(true);
+    const [botaoNovoHabito, setBotaoNovoHabito] = useState(false);
+    const [habitos, setHabitos] = useState([])
+    const config = { "headers": {"Authorization": `Bearer ${user.token}`} }
 
-    // useEffect(() => {
-    //     if (localStorageUser === null) {
-    //         navigate("/", {state: {errorMessage: "Faça o login!"}})
-    //     }
-    // }, [])
-
-
-
-    // const navigate = useNavigate()
-    // let localStorageUser = localStorage.getItem("user")
-    // console.log(localStorageUser)
-
-
-
+    useEffect(() => {
+        axios.get(`${BASE_URL}/habits`, config)
+            .then(response=>{
+                console.log("A")
+                console.log(response.data)
+                setHabitos(response.data)
+                setCarregando(false)
+            })
+            .catch(err=>console.log(err.res.data))
+    }, [])
     
-    // if (!localStorageUser.getItem("user")) {
-    //     navigate("/", {state: {errorMessage: "Faça o login!"}})
-    // }
-    // const localStorageUser = JSON.parse(localStorage.getItem("user"))
-    // const [user, setUser] = useState(localStorageUser === null ? {} : localStorageUser);
-    // const { user } = useContext(UserContext);
-    // useEffect(() => {
-    //     console.log(user)
-    //     if (localStorageUser === null) {
-    //         navigate("/", {state: {errorMessage: "Faça o login!"}})
-    //     }
-    // }, [])
-
-
-    
-    // const [habitos, setHabitos] = useState([])
-    // const config = { "headers": {"Authorization": `Bearer ${user.token}`} }
-
-    // console.log('user :')
-    // console.log(user.password)
-
-    // useEffect(() => {
-    //     axios.get(`${BASE_URL}/habits`, config)
-    //         .then()
-    //         .catch()
-    // }, [])
-    
-    
+    console.log(habitos.length)
 
     return (
-        <HabitosPageContainer>
-            <NavBar />
-            <MainContainer>
-                <ContainerTopo>
-                    <p>Meus hábitos</p>
-                    <button><p>+</p></button>
-                </ContainerTopo>
-                <ContentPlaceholder />
-                <ContainerCards>
-                    {/* <NovoHabitoCard /> */}
-                    <MensagemInicial />
-                    <HabitoCard />
-                    <HabitoCard />
-                    <HabitoCard />
-                    <HabitoCard />
-                    <HabitoCard />
-                    <HabitoCard />
-                </ContainerCards>
-       
-            </MainContainer>
-            <Footer />
-        </HabitosPageContainer>
+        <HabitosContext.Provider value={{ habitos, setHabitos }}>
+            <HabitosPageContainer>
+                <NavBar />
+                <MainContainer>
+                    <ContainerTopo>
+                        <p>Meus hábitos</p>
+                        <button onClick={()=>setBotaoNovoHabito(true)}><p>+</p></button>
+                    </ContainerTopo>
+                    <ContainerCards>
+                        <NovoHabitoCard botaoNovoHabito={botaoNovoHabito} setBotaoNovoHabito={setBotaoNovoHabito} />
+                        <ContentPlaceholder carregando={carregando} />
+                        {habitos.map(habito => (
+                            <HabitoCard
+                                key={habito.id}
+                                id={habito.id}
+                                name={habito.name}
+                                days={habito.days}
+                            />
+                        ))}
+                        <MensagemInicial carregando={carregando} visivel={habitos.length === 0}/>
+                        
+                    </ContainerCards>
+        
+                </MainContainer>
+                <Footer />
+            </HabitosPageContainer>            
+        </HabitosContext.Provider>
+
     )
 }
