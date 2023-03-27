@@ -21,12 +21,14 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
                 const daysArray = body.days.filter((elem)=>elem!==Number(event.target.value))
                 const newBody = {...body, ['days']: daysArray}
                 setBody(newBody)
+                console.log(newBody)
             } else {
                 console.log("B")
                 const daysArray = [...body.days];
                 daysArray.push(Number(event.target.value))
                 const newBody = {...body, ['days']: daysArray}
                 setBody(newBody)
+                console.log(newBody)
             }
         }
 
@@ -43,6 +45,8 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
                         console.log("A")
                         console.log(response.data)
                         setHabitos(response.data)
+                        const initialBody = {...body, ["name"]: ""}
+                        setBody(initialBody)
                     })
                     .catch(err=>console.log(err.res.data))
             })
@@ -98,7 +102,7 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
                     setBody(initialBody)
                     setBotaoNovoHabito(false)
                 }}>Cancelar</button>
-                <button onClick={handleSubmit} type="submit" disabled={body.days == false || body.name === ""}>Salvar</button>
+                <button onClick={handleSubmit} type="submit" disabled={body.days.length === 0 || body.name === ""}>Salvar</button>
             </ButtonsDiv>
         </CardContainer>
         : ""}
