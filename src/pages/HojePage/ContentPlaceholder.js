@@ -1,4 +1,4 @@
-import ContentLoader from 'react-content-loader'
+import { ContentLoader } from 'react-content-loader'
 import styled from 'styled-components';
 
 const loaderWidth = window.innerWidth - 34;
