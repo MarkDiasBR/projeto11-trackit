@@ -6,6 +6,7 @@ import BASE_URL from "../../constants/url"
 import axios from "axios"
 
 export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) {
+    const [carregando, setCarregando] = useState(false);
     const [body, setBody] = useState({"name": "", "days": []})
     const { user } = useContext(UserContext)
     const { habitos, setHabitos } = useContext(HabitosContext);
@@ -37,6 +38,7 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
     function handleSubmit(event) {
         console.log("objeto body abaixo")
         console.log(body)
+        setCarregando(true)
         axios.post(`${BASE_URL}/habits`, body, config)
             .then(response => {
                 console.log(response.data)
@@ -47,11 +49,14 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
                         setHabitos(response.data)
                         const initialBody = {...body, ["name"]: ""}
                         setBody(initialBody)
+                        setCarregando(false)
                     })
                     .catch(err=>console.log(err.res.data))
+                    setCarregando(false)
             })
             .catch(error => {
                 console.log(error.response.data.message)
+                setCarregando(false)
         })
     }
 
@@ -65,6 +70,7 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
                 placeholder="Ler 1 capítulo de livro"
                 value={body.name}
                 onChange={handleBody}
+                autoComplete="off"
             />
             <DaysDiv>
                 <button
@@ -102,7 +108,11 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
                     setBody(initialBody)
                     setBotaoNovoHabito(false)
                 }}>Cancelar</button>
-                <button onClick={handleSubmit} type="submit" disabled={body.days.length === 0 || body.name === ""}>Salvar</button>
+                <button onClick={handleSubmit} type="submit" disabled={body.days.length === 0 || body.name === ""}>
+                    {carregando
+                    ? <img src="./assets/img/SpinnerDots.svg " alt="Loading"/>
+                    : "Salvar"}
+                </button>
             </ButtonsDiv>
         </CardContainer>
         : ""}

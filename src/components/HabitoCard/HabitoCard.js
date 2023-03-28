@@ -3,7 +3,7 @@ import BASE_URL from "../../constants/url"
 import axios from "axios"
 import { UserContext } from "../../App";
 import { HabitosContext } from "../../pages/HabitosPage/HabitosPage";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 
 export default function HabitoCard({ id, name, days}) {
@@ -11,6 +11,7 @@ export default function HabitoCard({ id, name, days}) {
     const { user } = useContext(UserContext);
     const { setHabitos } = useContext(HabitosContext);
     const config = {"headers": {"Authorization": `Bearer ${user.token}`}};
+    const [carregando, setCarregando] = useState(false)
 
     function deleteHabito() {
         console.log('esse é meu id do hábito')
@@ -33,7 +34,15 @@ export default function HabitoCard({ id, name, days}) {
     return (
         <CardContainer>
             <p>{ name }</p>
-            <button onClick={()=>deleteHabito({id})}><img src="./assets/img/Lixeira.svg" alt="Excluir" /></button>
+            <button onClick={()=>{
+                deleteHabito({id})
+                setCarregando(true)
+            }}>
+                {carregando
+                ? <img src="./assets/img/SpinnerLixeira.svg" alt="Excluir" style={{width:"18px"}} />
+                : <img src="./assets/img/Lixeira.svg" alt="Excluir" />
+                }
+            </button>
             <DaysDiv>
                 {daysOfWeek.map((dia, indice) => (
                     <button key={`${id}${indice}${dia}`} className={`${days.includes(indice) && "selecionado"}`}>

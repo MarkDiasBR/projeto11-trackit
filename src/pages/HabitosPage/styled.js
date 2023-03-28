@@ -6,7 +6,8 @@ export const HabitosPageContainer = styled.div`
 `
 
 export const MainContainer = styled.div`
-    height: 100vh;
+    min-height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
     align-items: center;

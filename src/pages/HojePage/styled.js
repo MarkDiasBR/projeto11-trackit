@@ -5,7 +5,8 @@ export const HojePageContainer = styled.div`
     background-color: #E5E5E5;
 `
 export const MainContainer = styled.div`
-    height: 100vh;
+    min-height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
     padding: 70px 17px;
@@ -23,4 +24,11 @@ export const MainContainer = styled.div`
             color: #BABABA !important; 
         }
     }
+`
+
+export const ContainerCards = styled.div`
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
 `

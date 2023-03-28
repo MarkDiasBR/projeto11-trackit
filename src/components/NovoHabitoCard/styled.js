@@ -16,6 +16,7 @@ export const CardContainer = styled.div`
         height: 45px;
         font-size: 20px;
         padding: 11px;
+        outline: none;
 
         &::placeholder {
             color: #DBDBDB;
@@ -60,6 +61,12 @@ export const ButtonsDiv = styled.div`
         font-size: 16px;
         color: #FFFFFF;
         width: 84px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            height: 12px;
+        }
         &:first-child {
             background-color: #FFFFFF;
             color: #52B6FF;
