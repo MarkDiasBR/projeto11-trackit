@@ -15,7 +15,7 @@ export const HojeHabitosContext = createContext();
 
 export default function HojePage() {
     const navigate = useNavigate();
-    const { user } = useContext(UserContext);
+    const { user, percentage, setPercentage } = useContext(UserContext);
     const localStorageUser = JSON.parse(localStorage.getItem("user"));
     const [carregando, setCarregando] = useState(true);
     const [hojeHabitos, setHojeHabitos] = useState([])
@@ -28,7 +28,16 @@ export default function HojePage() {
 
     window.scrollTo({ top: 0, behavior: 'smooth' })
 
+    function atualizaPercentage(arrayDeObj) {
+        console.log(arrayDeObj.reduce((acum, obj) => acum + (obj.done ? 1 : 0), 0)*100/(arrayDeObj.length))
+        setPercentage(arrayDeObj.reduce((acum, obj) => acum + (obj.done ? 1 : 0), 0)*100/(arrayDeObj.length))
+        localStorage.setItem("percentage", JSON.stringify(arrayDeObj.reduce((acum, obj) => acum + (obj.done ? 1 : 0), 0)*100/(arrayDeObj.length)))
+    }
+
+
+
     useEffect(() => {
+        setPercentage(100)
 
         if (bounceOut) {
             navigate("/", {state: {errorMessage: "Faça o login!"}})
@@ -43,6 +52,7 @@ export default function HojePage() {
                 console.log(response.data)
                 setHojeHabitos(response.data)
                 setCarregando(false)
+                atualizaPercentage(response.data)
             })
             .catch(err=>console.log(err.response.data))
     }, [])
@@ -51,9 +61,9 @@ export default function HojePage() {
         <HojeHabitosContext.Provider value={{ hojeHabitos, setHojeHabitos }}>
             <HojePageContainer>
                 <NavBar />
-                <MainContainer>
+                <MainContainer carregando={carregando} percentage={percentage}>
                     <p>Segunda, 15/02</p>
-                    <p>Nenhum hábito concluído ainda</p> 
+                    <p>{(!carregando && percentage) ? `${percentage.toFixed()}% dos hábitos concluídos` : "Nenhum hábito concluído ainda"}</p> 
 
                     <ContainerCards>
                         <ContentPlaceholder carregando={carregando} />

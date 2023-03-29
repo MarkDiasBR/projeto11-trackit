@@ -21,7 +21,7 @@ export const MainContainer = styled.div`
             margin-top: 6px;
             font-family: 'Lexend Deca', sans-serif;
             font-size: 18px;
-            color: #BABABA; 
+            color: ${props=>!props.carregando && props.percentage ? "#8FC549" : "#BABABA"}; 
         }
     }
 `

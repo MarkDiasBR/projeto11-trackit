@@ -2,11 +2,20 @@ import { CircleContainer, FooterContainer } from "./styled";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../App";
 
 
-const percentage = 68;
 
 export default function Footer() {
+    const { percentage, setPercentage } = useContext(UserContext);
+    const localStoragePercentage = JSON.parse(localStorage.getItem("percentage"))
+
+    useEffect(() => {
+        setPercentage(localStoragePercentage)
+    }, [])
+    
+
     return (
         <FooterContainer>
             <Link to="/habitos">

@@ -12,9 +12,10 @@ export const UserContext = createContext();
 function App() {
     const localStorageUser = JSON.parse(localStorage.getItem("user"))
     const [user, setUser] = useState(localStorageUser)
+    const [percentage, setPercentage] = useState(0);
 
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser, percentage, setPercentage }}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LoginPage />} />
