@@ -26,7 +26,10 @@ export default function HojePage() {
 
     const bounceOut = ( !user || !localStorageUser );
 
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
     useEffect(() => {
+
         if (bounceOut) {
             navigate("/", {state: {errorMessage: "Faça o login!"}})
             return;

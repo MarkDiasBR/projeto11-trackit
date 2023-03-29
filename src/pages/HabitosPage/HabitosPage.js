@@ -27,7 +27,11 @@ export default function HabitosPage() {
 
     const bounceOut = ( !user || !localStorageUser );
 
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
     useEffect(() => {
+
+
         if (bounceOut) {
             navigate("/", {state: {errorMessage: "Faça o login!"}})
             return;
@@ -53,7 +57,7 @@ export default function HabitosPage() {
                 <NavBar />
                 <MainContainer>
                     <ContainerTopo>
-                        <p>Meus hábitos</p>
+                        <p id={"title-habitos"}>Meus hábitos</p>
                         <button onClick={()=>setBotaoNovoHabito(true)}><p>+</p></button>
                     </ContainerTopo>
                     <ContainerCards>

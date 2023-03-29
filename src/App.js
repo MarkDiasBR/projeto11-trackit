@@ -17,8 +17,8 @@ function App() {
         <UserContext.Provider value={{ user, setUser }}>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<LoginPage />}/>
-                    <Route path="/cadastro" element={<CadastroPage />}/>
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/cadastro" element={<CadastroPage />} />
                     <Route path="/habitos" element={<HabitosPage />} />
                     <Route path="/hoje" element={<HojePage />} />
                     <Route path="/historico" element={<HistoricoPage />} />
