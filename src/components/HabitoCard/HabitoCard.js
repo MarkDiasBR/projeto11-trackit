@@ -26,9 +26,9 @@ export default function HabitoCard({ id, name, days}) {
                     console.log(response.data)
                     setHabitos(response.data)
                 })
-                .catch(err=>console.log(err.res.data))
+                .catch(err=>console.log(err.response.data))
         })
-        .catch(err=>console.log(err.res.data))
+        .catch(err=>console.log(err.response.data))
     }
 
     return (

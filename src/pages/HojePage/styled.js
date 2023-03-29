@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
     flex-direction: column;
     padding: 70px 17px;
     
-    p {
+    & > p {
         margin-top: 35px;
         font-family: 'Lexend Deca', sans-serif;
         font-weight: 400;
@@ -20,8 +20,8 @@ export const MainContainer = styled.div`
         &:nth-child(2) {
             margin-top: 6px;
             font-family: 'Lexend Deca', sans-serif;
-            font-size: 18px !important;
-            color: #BABABA !important; 
+            font-size: 18px;
+            color: #BABABA; 
         }
     }
 `
@@ -29,6 +29,12 @@ export const MainContainer = styled.div`
 export const ContainerCards = styled.div`
     width: 100%;
     height: 100%;
-    margin-top: 20px;
+    /* background-color: magenta; */
+`
+
+export const ContainerHojeCards = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 50px;
 `

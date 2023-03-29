@@ -4,9 +4,11 @@ export const CardContainer = styled.div`
     margin-top: 10px;
     background-color: #FFFFFF;
     width: 100%;
+    min-height: 96px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     &:first-of-type {
         margin-top: 0;
@@ -14,7 +16,7 @@ export const CardContainer = styled.div`
 
     p {
         margin-left: 19px;
-        margin-top: 18px;
+        margin-top: 13px;
         margin-bottom: 0px;
         width: calc(100% - 38px);
         font-size: 20px;

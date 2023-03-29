@@ -18,6 +18,7 @@ export const MainContainer = styled.div`
         font-weight: 400;
         font-size: 22px;
         color: #126BA5;
+        padding-right: 15px;
     }
 
     button {
@@ -38,6 +39,7 @@ export const MainContainer = styled.div`
             color: #FFFFFF;
             position: relative;
             bottom: 2px;
+            padding-right: 0;
         }
 
         &:link, &:active, &:focus {
@@ -58,8 +60,8 @@ export const ContainerTopo = styled.div`
 export const ContainerCards = styled.div`
     width: 100%;
     height: 100%;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin-top: 18px;
+    margin-bottom: 28px;
 `
 
 // export const MasterDiv = styled.div`

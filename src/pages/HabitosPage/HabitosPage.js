@@ -14,15 +14,27 @@ import BASE_URL from "../../constants/url"
 export const HabitosContext = createContext();
 
 export default function HabitosPage() {
-    const localStorageUser = JSON.parse(localStorage.getItem("user"))
     const navigate = useNavigate()
     const { user } = useContext(UserContext);
+    const localStorageUser = JSON.parse(localStorage.getItem("user"))
     const [carregando, setCarregando] = useState(true);
     const [botaoNovoHabito, setBotaoNovoHabito] = useState(false);
     const [habitos, setHabitos] = useState([])
-    const config = { "headers": {"Authorization": `Bearer ${user.token}`} }
+
+    if (localStorageUser === null) {
+        localStorage.setItem("user", JSON.stringify(user))
+    }
+
+    const bounceOut = ( !user || !localStorageUser );
 
     useEffect(() => {
+        if (bounceOut) {
+            navigate("/", {state: {errorMessage: "Faça o login!"}})
+            return;
+        }
+        
+        const config = { "headers": {"Authorization": `Bearer ${user.token}`} }
+
         axios.get(`${BASE_URL}/habits`, config)
             .then(response=>{
                 console.log("A")
@@ -30,7 +42,7 @@ export default function HabitosPage() {
                 setHabitos(response.data)
                 setCarregando(false)
             })
-            .catch(err=>console.log(err.res.data))
+            .catch(err=>console.log(err.response.data))
     }, [])
     
     console.log(habitos.length)

@@ -1,16 +1,26 @@
 import { CardContainer, DaysDiv, ButtonsDiv } from "./styled"
 import { useContext, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../App"
 import { HabitosContext } from "../../pages/HabitosPage/HabitosPage"
 import BASE_URL from "../../constants/url"
 import axios from "axios"
 
+
 export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) {
+    const navigate = useNavigate()
+    const { user } = useContext(UserContext)    
+    const localStorageUser = JSON.parse(localStorage.getItem("user"))
     const [carregando, setCarregando] = useState(false);
     const [body, setBody] = useState({"name": "", "days": []})
-    const { user } = useContext(UserContext)
-    const { habitos, setHabitos } = useContext(HabitosContext);
-    const config = { "headers" : { "Authorization": `Bearer ${user.token}` } };
+    const { setHabitos } = useContext(HabitosContext);
+
+    if (localStorageUser === null) {
+        localStorage.setItem("user", JSON.stringify(user))
+    }
+
+    const bounceOut = ( !user || !localStorageUser );
+    const config = { "headers" : { "Authorization": `Bearer ${user ? user.token : ""}` } };
 
     function handleBody(event) {
         if (event.target.type === "text") {
@@ -51,7 +61,7 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
                         setBody(initialBody)
                         setCarregando(false)
                     })
-                    .catch(err=>console.log(err.res.data))
+                    .catch(err=>console.log(err.response.data))
                     setCarregando(false)
             })
             .catch(error => {
@@ -59,6 +69,10 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
                 setCarregando(false)
         })
     }
+
+    useEffect(() => {
+        
+    })
 
     return (
         <>
