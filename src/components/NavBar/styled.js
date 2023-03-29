@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const NavBarContainer = styled.div`
     z-index: 1;
     padding: 0 18px;
-    background: rgb(20,131,203);
-    background: linear-gradient(180deg, rgba(20,131,203,1) 0%, rgba(15,84,128,1) 100%);
+    background: rgb(20,112,172);
+    background: linear-gradient(180deg, rgba(20,112,172,1) 0%, rgba(17,101,156,1) 100%);
     &::before {
         content: "";
         background-image: url("./assets/img/Noise.png");
