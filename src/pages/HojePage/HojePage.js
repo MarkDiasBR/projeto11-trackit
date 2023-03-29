@@ -29,9 +29,12 @@ export default function HojePage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
 
     function atualizaPercentage(arrayDeObj) {
-        console.log(arrayDeObj.reduce((acum, obj) => acum + (obj.done ? 1 : 0), 0)*100/(arrayDeObj.length))
-        setPercentage(arrayDeObj.reduce((acum, obj) => acum + (obj.done ? 1 : 0), 0)*100/(arrayDeObj.length))
-        localStorage.setItem("percentage", JSON.stringify(arrayDeObj.reduce((acum, obj) => acum + (obj.done ? 1 : 0), 0)*100/(arrayDeObj.length)))
+        if(arrayDeObj.length === 0) {
+            setPercentage(0)
+        } else {
+            setPercentage(arrayDeObj.reduce((acum, obj) => acum + (obj.done ? 1 : 0), 0)*100/(arrayDeObj.length))
+            localStorage.setItem("percentage", JSON.stringify(arrayDeObj.reduce((acum, obj) => acum + (obj.done ? 1 : 0), 0)*100/(arrayDeObj.length)))
+        }            
     }
 
 
