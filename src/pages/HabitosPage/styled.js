@@ -3,15 +3,18 @@ import styled from "styled-components";
 export const HabitosPageContainer = styled.div`
     width: 100%;
     background-color: #E5E5E5;
+    display: flex;
+    flex-direction: column;
 `
 
 export const MainContainer = styled.div`
     min-height: 100vh;
-    height: max-content;
+    height: max-content; 
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 70px 17px;
+    overflow-y: hidden;
 
     p {
         font-family: 'Lexend Deca', sans-serif;
