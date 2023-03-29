@@ -3,7 +3,19 @@ import styled from "styled-components";
 export const NavBarContainer = styled.div`
     z-index: 1;
     padding: 0 18px;
-    background: #126BA5;
+    background: rgb(20,131,203);
+    background: linear-gradient(180deg, rgba(20,131,203,1) 0%, rgba(15,84,128,1) 100%);
+    &::before {
+        content: "";
+        background-image: url("./assets/img/Noise.png");
+        background-size: contain;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.19;
+    }
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     width: 100vw;
     height: 70px;
@@ -18,6 +30,7 @@ export const NavBarContainer = styled.div`
         color: #FFFFFF;
         font-size: 38px;
         font-family: 'Playball', cursive;
+        text-shadow: 0px 2px 2px rgba(0,0,0,0.3)
     }
 
     a {
@@ -34,5 +47,6 @@ export const NavBarContainer = styled.div`
         height: 51px;
         border-radius: 50%;
         object-fit: cover;
+        box-shadow: 1px 2px 4px rgba(0,0,0,0.7);
     }
 `
