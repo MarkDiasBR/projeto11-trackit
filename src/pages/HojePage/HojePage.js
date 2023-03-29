@@ -26,8 +26,6 @@ export default function HojePage() {
 
     const bounceOut = ( !user || !localStorageUser );
 
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-
     function atualizaPercentage(arrayDeObj) {
         if(arrayDeObj.length === 0) {
             setPercentage(0)
@@ -41,6 +39,7 @@ export default function HojePage() {
 
     useEffect(() => {
         setPercentage(100)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
 
         if (bounceOut) {
             navigate("/", {state: {errorMessage: "Faça o login!"}})
@@ -79,6 +78,7 @@ export default function HojePage() {
                                     done={habito.done}
                                     currentSequence={habito.currentSequence}
                                     highestSequence={habito.highestSequence}
+                                    atualizaPercentage={atualizaPercentage}
                                 />
                             ))}           
                         </ContainerHojeCards>

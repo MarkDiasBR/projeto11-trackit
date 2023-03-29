@@ -6,7 +6,7 @@ import axios from "axios"
 import BASE_URL from "../../constants/url"
 
 
-export default function HojeCard({ id, name, done, currentSequence, highestSequence }) {
+export default function HojeCard({ id, name, done, currentSequence, highestSequence, atualizaPercentage }) {
     const { user } = useContext(UserContext);
     const { setHojeHabitos } = useContext(HojeHabitosContext);
     const config = {"headers": {"Authorization": `Bearer ${user.token}`}};
@@ -23,7 +23,11 @@ export default function HojeCard({ id, name, done, currentSequence, highestSeque
             .then(response=>{
                 console.log("B")
                 console.log(response.data)
+                const myArr = [...response.data]
+                console.log("myArr :",myArr)
+                atualizaPercentage(myArr)
                 setHojeHabitos(response.data)
+                
             })
             .catch(err=>console.log(err.response.data))
         })

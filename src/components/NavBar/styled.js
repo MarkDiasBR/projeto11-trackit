@@ -14,7 +14,7 @@ export const NavBarContainer = styled.div`
         right: 0px;
         bottom: 0px;
         left: 0px;
-        opacity: 0.13;
+        opacity: 0.1;
     }
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     width: 100vw;

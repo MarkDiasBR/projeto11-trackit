@@ -14,6 +14,17 @@ function App() {
     const [user, setUser] = useState(localStorageUser)
     const [percentage, setPercentage] = useState(0);
 
+    useEffect(() => {
+        window.onload = function () {
+            window.ontransitionend = function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+        }
+    }, [])
+    
+
+
+
     return (
         <UserContext.Provider value={{ user, setUser, percentage, setPercentage }}>
             <BrowserRouter>

@@ -27,10 +27,8 @@ export default function HabitosPage() {
 
     const bounceOut = ( !user || !localStorageUser );
 
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-
     useEffect(() => {
-
+        window.scrollTo({ top: 0, behavior: 'smooth' })
 
         if (bounceOut) {
             navigate("/", {state: {errorMessage: "Faça o login!"}})
