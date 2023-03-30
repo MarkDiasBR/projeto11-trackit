@@ -54,7 +54,7 @@ export default function LoginPage() {
     function ErrorAlert(props) {
         return (
             <>
-                <p>⚠️ ACESSO NÃO PERMITIDO</p>
+                <p>{props.errorTitle}</p>
                 <p>{props.errorMessage}</p>
             </> 
         )
@@ -95,8 +95,8 @@ export default function LoginPage() {
         <AnimatedContainer className={`${classGone}`}>
             <AlertContainer>
                 {state && (
-                    <AlertDiv>
-                        <ErrorAlert errorMessage={state.errorMessage}/>
+                    <AlertDiv errorColor={state.errorColor}>
+                        <ErrorAlert errorMessage={state.errorMessage} errorTitle={state.errorTitle}/>
                     </AlertDiv>
                 )}
             </AlertContainer>            

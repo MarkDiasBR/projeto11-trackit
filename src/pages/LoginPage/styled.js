@@ -95,7 +95,7 @@ export const AlertDiv = styled.div`
     border-radius: 5px;
     max-width: 450px;
     height: 80px;
-    background-color: #F7330E;
+    background-color: ${props=>props.errorColor};
     color: #FFFFFF;
     font-family: 'Lexend Deca', sans-serif;
     display: flex;

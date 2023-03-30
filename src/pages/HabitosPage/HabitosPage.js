@@ -31,7 +31,10 @@ export default function HabitosPage() {
         window.scrollTo({ top: 0, behavior: 'smooth' })
 
         if (bounceOut) {
-            navigate("/", {state: {errorMessage: "Faça o login!"}})
+            navigate("/", {state: {
+                errorTitle: "⚠️ ACESSO NÃO PERMITIDO",
+                errorMessage: "Faça o login!",
+                errorColor: "#F7330E"}})
             return;
         }
         

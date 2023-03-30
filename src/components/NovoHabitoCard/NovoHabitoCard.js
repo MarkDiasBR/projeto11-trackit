@@ -71,7 +71,13 @@ export default function NovoHabitoCard({ botaoNovoHabito, setBotaoNovoHabito }) 
     }
 
     useEffect(() => {
-        
+        if (bounceOut) {
+            navigate("/", {state: {
+                errorTitle: "⚠️ ACESSO NÃO PERMITIDO",
+                errorMessage: "Faça o login!",
+                errorColor: "#F7330E"}})
+            return;
+        }   
     })
 
     return (
