@@ -65,8 +65,18 @@ export default function HistoricoPage() {
         .catch(err=>console.log(err.response.data))
     }, [])
 
+    function handleDayClick(date) {
+        const clickedDate = dayjs(date).format("DD/MM/YYYY")
 
-    
+        if (!successDays.find(s=>s.day===clickedDate) && !failureDays.find(f=>f.day===clickedDate)) {
+            alert("Não existem hábitos nesse dia")
+        } else {
+            const daysHistory = history.find(x=>x.day === clickedDate)
+            let alertText = `Tarefas do dia ${clickedDate}:\n`
+            daysHistory.habits.map(h=>alertText += `\n * ${h.name}\n    Tarefa ${h.done ? "in" : ""}completa\n`)
+            alert(alertText)
+        }
+    }
 
     return (
         <HistoricoPageContainer>
@@ -82,7 +92,8 @@ export default function HistoricoPage() {
                     <StyledCalendar
                         tileClassName={getClassName}
                         locale="pt-BR"
-                        formatDay={(_, date)=>dayjs(date).format("DD")}                   
+                        formatDay={(_, date)=>dayjs(date).format("DD")}
+                        onClickDay={(date) => handleDayClick(date)}                  
                     />
                 </ContainerCalendar>}
             </MainContainer>
