@@ -8,6 +8,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../App"
 import ContentPlaceholder from "./ContentPlaceholder"
+import Date from "./Date"
 import axios from "axios"
 import BASE_URL from "../../constants/url"
 
@@ -62,7 +63,7 @@ export default function HojePage() {
             <HojePageContainer>
                 <NavBar />
                 <MainContainer carregando={carregando} percentage={percentage}>
-                    <p>Segunda, 15/02</p>
+                    <Date />
                     <p>{(!carregando && percentage) ? `${percentage.toFixed()}% dos hábitos concluídos` : "Nenhum hábito concluído ainda"}</p> 
 
                     <ContainerCards>
