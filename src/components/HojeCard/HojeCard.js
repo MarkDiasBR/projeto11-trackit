@@ -1,5 +1,5 @@
 import { CardContainer, MainContainer, SubtitlesContainer, ImageBackground } from "./styled"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../App";
 import { HojeHabitosContext } from "../../pages/HojePage/HojePage";
 import axios from "axios"
@@ -9,29 +9,32 @@ import BASE_URL from "../../constants/url"
 export default function HojeCard({ id, name, done, currentSequence, highestSequence, atualizaPercentage }) {
     const { user } = useContext(UserContext);
     const { setHojeHabitos } = useContext(HojeHabitosContext);
+    const [carregando, setCarregando] = useState(false);
+
     const config = {"headers": {"Authorization": `Bearer ${user.token}`}};
 
     function habitoCheckToggle() {
+        setCarregando(true)
         console.log('esse é meu id do hábito:', id)
         console.log('esse é meu token:', user.token)
         axios.post(`${BASE_URL}/habits/${id}/${done ? "uncheck" : "check"}`,{}, config)
-        .then(response=>{
-            console.log("A")
-            console.log(response.data)
-
-            axios.get(`${BASE_URL}/habits/today`, config)
             .then(response=>{
-                console.log("B")
+                console.log("A")
                 console.log(response.data)
-                const myArr = [...response.data]
-                console.log("myArr :",myArr)
-                atualizaPercentage(myArr)
-                setHojeHabitos(response.data)
-                
+
+                axios.get(`${BASE_URL}/habits/today`, config)
+                .then(response=>{
+                    console.log("B")
+                    console.log(response.data)
+                    const myArr = [...response.data]
+                    console.log("myArr :",myArr)
+                    atualizaPercentage(myArr)
+                    setHojeHabitos(response.data)
+                    setCarregando(false)                    
+                })
+                .catch(err=>console.log(err.response.data))
             })
             .catch(err=>console.log(err.response.data))
-        })
-        .catch(err=>console.log(err.response.data))
     }
 
     return (
@@ -44,7 +47,9 @@ export default function HojeCard({ id, name, done, currentSequence, highestSeque
                 </SubtitlesContainer>
             </MainContainer>
             <ImageBackground onClick={habitoCheckToggle} done={done}>
-                <img src="./assets/img/Checkmark.svg" alt="Check" />
+                {carregando ?
+                <img src="./assets/img/SpinnerFino.svg" alt="Wait" /> :
+                <img src="./assets/img/Checkmark.svg" alt="Check" />}
             </ImageBackground>
         </CardContainer>
     )

@@ -64,8 +64,11 @@ export default function HojePage() {
                 <NavBar />
                 <MainContainer carregando={carregando} percentage={percentage}>
                     <Date />
+                    {carregando ?
+                    <p>Buscando hábitos...</p> :
                     <p>{(!carregando && percentage) ? `${percentage.toFixed()}% dos hábitos concluídos` : "Nenhum hábito concluído ainda"}</p> 
-
+                    }
+                    
                     <ContainerCards>
                         <ContentPlaceholder carregando={carregando} />
                         <ContainerHojeCards>
