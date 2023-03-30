@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Calendar from "react-calendar"
 
 export const HistoricoPageContainer = styled.div`
     width: 100%;
@@ -6,7 +7,8 @@ export const HistoricoPageContainer = styled.div`
 `
 
 export const MainContainer = styled.div`
-    height: 100vh;
+    min-height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
     padding: 70px 17px;
@@ -18,6 +20,17 @@ export const MainContainer = styled.div`
         font-size: 22px;
         color: #126BA5;
     }
+`
 
+export const ContainerCalendar = styled.div`
+    height: 400px;
+    margin-bottom: 30px;
+`
 
+export const StyledCalendar = styled(Calendar)`
+    width: 100%;
+    height: 100%;
+    margin-top: 12px;
+    border: none;
+    border-radius: 10px
 `
