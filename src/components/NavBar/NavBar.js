@@ -2,12 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NavBarContainer, LogoutDiv, ContainerLogOff } from "./styled";
 import { UserContext } from "../../App";
+import { useTransition, animated } from "react-spring";
+import { easeBackInOut } from "d3-ease";
+// import { isVisible } from "@testing-library/user-event/dist/utils";
 
 export default function NavBar() {
     const navigate = useNavigate()
     const { user, setUser } = useContext(UserContext);
     const localStorageUser = JSON.parse(localStorage.getItem("user"));
-    const [showLogout, setShowLogout] = useState(false)
+    const [isVisible, setIsVisible] = useState(false)
+    const transition = useTransition(isVisible, {
+        from: {opacity: 0},
+        enter: {opacity: 1},
+        leave: {opacity: 0},
+        config: { duration: 100}
+    });
 
     if (localStorageUser === null) {
         localStorage.setItem("user", JSON.stringify(user))
@@ -23,7 +32,8 @@ export default function NavBar() {
     }, [])
 
     function handleLogoutToggle() {
-        setShowLogout(!showLogout)
+        setIsVisible(v=>!v)
+        console.log(isVisible)
     }
 
     function handleLogOff() {
@@ -33,11 +43,11 @@ export default function NavBar() {
         navigate("/", {state: {
             errorTitle: "LOGOUT EFETUADO",
             errorMessage: "Até logo! 😉",
-            errorColor: "#282352"}})
+            errorColor: "#6c3973"}})
     }
 
     return (
-        <NavBarContainer showLogout={showLogout}>
+        <NavBarContainer showLogout={isVisible}>
             <Link to="/habitos">
                 <p>TrackIt</p>
             </Link>
@@ -45,7 +55,9 @@ export default function NavBar() {
             {/* { user
             ? <img src={ user.image } alt="User"/>
             : <img src="./assets/img/profile-user-dummy.png" alt="User" /> } */}
-            {showLogout ?
+            {/* {transition((style, item) => 
+                item ? <animated.div style={style} className="item"/> : ""
+            )}
             <LogoutDiv>
                 <ContainerLogOff>
                     <p>sair:</p>
@@ -53,8 +65,24 @@ export default function NavBar() {
                         <img src="./assets/img/LogOff.svg" alt="Sair" />
                     </div>
                 </ContainerLogOff>
-            </LogoutDiv>
-            : ""}            
+            </LogoutDiv> */}
+            {transition((style, item) => 
+                item ? 
+                <animated.div style={style} className={"item"}>
+                    <LogoutDiv>
+                        <ContainerLogOff>
+                            <p>sair:</p>
+                            <div onClick={handleLogOff}>
+                                <img src="./assets/img/LogOff.svg" alt="Sair" />
+                            </div>
+                        </ContainerLogOff>
+                    </LogoutDiv>
+                </animated.div>
+                : ""
+            )}
+            
+
+
         </NavBarContainer>
     )
 }

@@ -42,13 +42,20 @@ export const NavBarContainer = styled.div`
         outline: none;
     }
     
-    img {
+    &>img {
         z-index: 2;
         width: 51px;
         height: 51px;
         border-radius: 50%;
         object-fit: cover;
         box-shadow: ${props=>props.showLogout ? "none" : "1px 2px 4px rgba(0,0,0,0.7)"};
+
+            position: absolute;
+            right: 18px;
+    }
+
+    &>button {
+        z-index: 10;
     }
 `
 
@@ -73,7 +80,6 @@ export const LogoutDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    transition:
 `
 
 export const ContainerLogOff = styled.div`
