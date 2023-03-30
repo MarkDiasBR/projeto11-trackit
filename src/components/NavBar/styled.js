@@ -48,7 +48,7 @@ export const NavBarContainer = styled.div`
         height: 51px;
         border-radius: 50%;
         object-fit: cover;
-        box-shadow: ${props=>props.showLogout ? "none" : "1px 2px 4px rgba(0,0,0,0.7)"};
+        box-shadow: ${props=>props.showLogout ? "none" : "1px 2px 2px rgba(0,0,0,0.3)"};
 
             position: absolute;
             right: 18px;
