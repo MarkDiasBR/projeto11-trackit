@@ -87,6 +87,7 @@ export default function HistoricoPage() {
             <MainContainer>
                 <p>Histórico</p>
                 {/* <MensagemInicial /> */}
+                <ContentPlaceholder carregando={carregando} /> 
                 {carregando ?
 
                 <ContentPlaceholder carregando={carregando} /> :  
@@ -99,8 +100,17 @@ export default function HistoricoPage() {
                         onClickDay={(date) => handleDayClick(date)}                  
                     />
                 </ContainerCalendar>}
+
             </MainContainer>
-            <Footer />
+            <Footer />                
+            <div className={"overlay-calendar"}>
+                <div>
+                    A
+                </div>
+                <div>
+                    BBBBBBBBBBBBBBBBB
+                </div>
+            </div>
         </HistoricoPageContainer>
     )
 }

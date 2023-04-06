@@ -4,6 +4,7 @@ export const HojePageContainer = styled.div`
     width: 100%;
     background-color: #E5E5E5;
 `
+
 export const MainContainer = styled.div`
     min-height: 100vh;
     height: max-content;
